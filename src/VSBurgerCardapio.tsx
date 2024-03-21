@@ -143,9 +143,6 @@ const styles = StyleSheet.create({
     bottomImage:{
         width:300,
         height:130,
-        borderWidth:2,
-        borderColor:'#00BFFF',
-        borderRadius:25,
         resizeMode:'center'
       },
     container: {

@@ -1,11 +1,13 @@
 import React from "react";
 import { View } from "react-native";
-import VSBurger from "./src/VSBurger";
+import VSBurgerCarrinho from "./src/VSBurgerCarrinho";
+import VSBurgerCardapio from "./src/VSBurgerCardapio";
 
 function App(): React.JSX.Element{
   return(
    
-      <VSBurger/>
+   //   <VSBurgerCarrinho/>
+      <VSBurgerCardapio/>
    
   );
 }

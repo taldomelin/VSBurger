@@ -4,9 +4,9 @@ import VSBurger from "./src/VSBurger";
 
 function App(): React.JSX.Element{
   return(
-    <View>
+   
       <VSBurger/>
-    </View>
+   
   );
 }
 

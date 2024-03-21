@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, StyleSheet, FlatList, TouchableOpacity, StatusBar, Image, ImageBackground} from "react-native";
+import {View, Text, StyleSheet, FlatList, TouchableOpacity, StatusBar, Image, ImageBackground, ScrollView} from "react-native";
 
 interface Item {
     id: string,
@@ -119,7 +119,7 @@ const dados: Item[] = [
 
 const renderItem = ({item}: {item: Item}) => (
     <TouchableOpacity style={styles.item}>
-        <Text style={styles.fonteNome}>{item.nome} 👾</Text>
+        <Text style={styles.fonteNome}>{item.nome}🖥</Text>
         <Text style={styles.fonte}>-------------------------------------------</Text>
         <Image source={item.imagem} style={styles.bottomImage} />
         <Text style={styles.fonte}>💲-{item.preco}</Text>
@@ -136,12 +136,15 @@ function VSBurger(): React.JSX.Element {
             <View style={styles.header}>
                 <Image source={require('../src/assets/images/logo.png')} style={styles.headerIcon}></Image>
             </View>
+            
+            
             <FlatList
             showsVerticalScrollIndicator={false} 
                 data={dados}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id}
             />
+         
             </ImageBackground>
             <View style={styles.footer}>
                 <TouchableOpacity>
@@ -189,7 +192,7 @@ const styles = StyleSheet.create({
     item: {
         backgroundColor: 'black',
         padding: 20,
-        marginVertical: 8,
+        marginVertical: 10,
         marginHorizontal: 16,
         borderRadius:20,
         borderWidth:2,
@@ -214,7 +217,7 @@ const styles = StyleSheet.create({
     },
     headerIcon:{
         width:590,
-        height:80,
+        height:83,
         alignItems:'center'
     },
     fonteNome:{

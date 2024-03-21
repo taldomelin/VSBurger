@@ -183,8 +183,7 @@ const styles = StyleSheet.create({
         borderWidth:2,
         borderColor:'#00BFFF',
         borderRadius:25,
-        resizeMode:'center',
-        backgroundColor:'black'
+        resizeMode:'center'
       },
     container: {
         flex: 1,
@@ -223,14 +222,14 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     fonteNome:{
-        fontSize:28,
-        fontWeight:'bold',
-        color:'#00BFFF'
+        fontSize:25,
+        fontWeight:'100',
+        color:'white'
     },
     fonte:{
         fontSize:20,
-        color:'#00BFFF',
-        fontWeight:'600'
+        color:'white',
+        fontWeight:'300'
     },
     imagemfundo: {
         flex:1,

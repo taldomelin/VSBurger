@@ -123,8 +123,10 @@ const renderItem = ({item}: {item: Item}) => (
         <Text style={styles.fonte}>-------------------------------------------</Text>
         <Image source={item.imagem} style={styles.bottomImage} />
         <Text style={styles.fonte}>💲-{item.preco}</Text>
-        <Text style={styles.fonte}>-{item.ingredientes}😋🍔</Text>
+        <Text style={styles.fonte}>❃{item.ingredientes}😋🍔</Text>
+        <TouchableOpacity>
         <Image source={require('../src/assets/images/carrinho.png')} style={ styles.footerIcon}/>
+        </TouchableOpacity>
         </TouchableOpacity>
 )
 

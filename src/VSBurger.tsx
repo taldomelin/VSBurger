@@ -174,7 +174,7 @@ function VSBurger(): React.JSX.Element {
 const styles = StyleSheet.create({
     bottomImage:{
         width:300,
-        height:180,
+        height:130,
         borderWidth:2,
         borderColor:'#00BFFF',
         borderRadius:25,
@@ -200,11 +200,6 @@ const styles = StyleSheet.create({
     header: {
         alignItems: 'center'
     },
-    headerText: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: 'white'
-    },
     footer: {
         borderTopWidth:0.2,
         backgroundColor:'black',
@@ -218,7 +213,7 @@ const styles = StyleSheet.create({
         height:40
     },
     headerIcon:{
-        width:500,
+        width:590,
         height:80,
         alignItems:'center'
     },
@@ -235,7 +230,7 @@ const styles = StyleSheet.create({
     imagemfundo: {
         flex:1,
         justifyContent:'center',
-      }
+    }
 });
 
 export default VSBurger;

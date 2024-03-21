@@ -166,6 +166,9 @@ function VSBurger(): React.JSX.Element {
                     style={ styles.footerIcon}
                     />
                 </TouchableOpacity>
+                <TouchableOpacity style={styles.carrinho}>
+                    <Image style={styles.imagemCarrinho} source={require('../src/assets/images/sacola.png')} />
+                </TouchableOpacity>
                 <TouchableOpacity>
                     <Image
                     source={require('../src/assets/images/menu.png')}
@@ -234,6 +237,19 @@ const styles = StyleSheet.create({
     imagemfundo: {
         flex:1,
         justifyContent:'center',
+    },
+    carrinho:{
+        position:'absolute',
+        width:40,
+        height:140,
+        alignItems:'center',
+        justifyContent:'center',
+        right:20,
+        bottom:30
+    },
+    imagemCarrinho:{
+        width:80,
+        height:80
     }
 });
 

@@ -6,8 +6,8 @@ import VSBurgerCardapio from "./src/VSBurgerCardapio";
 function App(): React.JSX.Element{
   return(
    
-   //   <VSBurgerCarrinho/>
-      <VSBurgerCardapio/>
+      <VSBurgerCarrinho/>
+   //   <VSBurgerCardapio/>
    
   );
 }

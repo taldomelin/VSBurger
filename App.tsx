@@ -7,7 +7,7 @@ function App(): React.JSX.Element{
   return(
    
       <VSBurgerCarrinho/>
-   //   <VSBurgerCardapio/>
+     // <VSBurgerCardapio/>
    
   );
 }

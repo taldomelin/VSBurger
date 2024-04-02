@@ -60,7 +60,17 @@ const CadastroProduto: React.FC = () => {
             marginBottom:10
         },
         alinhamentoImagemSelecionada:{
-            
+            alignItems:'center'
+        },
+        button:{
+            backgroundColor:'red',
+            padding:10,
+            borderRadius:5,
+            alignItems:'center'
+        },
+        buttonText:{
+            color:'white',
+            fontWeight:'bold'
         }
     })
 

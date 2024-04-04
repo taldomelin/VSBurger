@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Image, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { launchCamera, launchImageLibrary } from "react-native-image-picker";
+import axios from "axios";
 
 const CadastroProduto: React.FC = () => {
         const [produtos, setProdutos] = useState<Produto[]>([]);
@@ -10,6 +11,25 @@ const CadastroProduto: React.FC = () => {
         const [imagem, setImagem] = useState<any>('');
 
         const CadastroProduto = async () => {
+            try{
+            const formData = new FormData();
+            formData.append('nome',nome);
+            formData.append('preco',preco);
+            formData.append('ingredientes',ingredientes);
+            formData.append('imagem',{
+                uri:imagem,
+                type: 'imagem/jpeg',
+                name: new Date() + '.jpg'
+            });
+
+            const response = await axios.post ('http://10.137.11.206:8000/api/produtos',formData,{
+                headers: {
+                    'Content-Type':'multipart/form-data'
+                }
+            });
+        }catch(error){
+            console.log(error);
+        }
 
         }
 

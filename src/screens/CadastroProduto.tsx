@@ -84,7 +84,7 @@ const CadastroProduto: React.FC = () => {
                 <View style={styles.alinhamentoImagemSelecionada}>
                     {imagem ? <Image source={{ uri : imagem }} style={styles.imageSelecionada} /> : null}
                 </View>
-                <TouchableOpacity style={styles.imageButton}>
+                <TouchableOpacity style={styles.imageButton} onPress={selecionarImagem}>
                     <Text style={styles.imagemButtonText}>Selecionar Imagem</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.imageButton} onPress={abrirCamera}>

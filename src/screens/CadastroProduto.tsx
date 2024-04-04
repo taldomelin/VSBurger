@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Image, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { launchCamera } from "react-native-image-picker";
+import { launchCamera, launchImageLibrary } from "react-native-image-picker";
 
 const CadastroProduto: React.FC = () => {
         const [produtos, setProdutos] = useState<Produto[]>([]);
@@ -33,6 +33,29 @@ const CadastroProduto: React.FC = () => {
                     }
                 });
         }
+
+        const selecionarImagem = () => {
+            const options = {
+                mediaType: 'photo',
+                includeBase64: false,
+                maxHeight: 2000,
+                maxWidht:2000
+            };
+
+            launchImageLibrary(options, (response)=>{
+                if(response.didCancel){
+                    console.log('cancelado pelo usuario');
+                }else if(response.error) {
+                    console.log('erro ao abrir a galeria');
+                }else {
+                    let imageUri = response.uri || response.assets?.[0]?.uri;
+                    setImagem(imageUri);
+                }
+            });
+        }
+
+
+
     return (
         <View style={styles.container}>
             <StatusBar backgroundColor="red" barStyle="light-content"/>

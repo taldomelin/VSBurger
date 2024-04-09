@@ -1,7 +1,7 @@
 interface Produto{
-    id: number;
-    nome: string;
-    ingredientes: string;
-    preco: number;
-    imagem: any;
+    nome:string;
+    preco:string;
+    ingredientes:string;
+    imagem:any;
+
 }

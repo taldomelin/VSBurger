@@ -28,11 +28,13 @@ const CadastroCliente: React.FC = () => {
         name: new Date() + '.jpg'
     });
 
-       const response =await axios.post('http://10.137.11.207:8000/api/cliente',formData, {
+       const response =await axios.post('http://10.137.11.206:8000/api/clientes',formData, {
            headers: {
                'Content-Type': 'multipart/form-data'
            }
        });
+
+       console.log(response.data)
      } catch(error) {
        console.log(error);
    }
@@ -123,13 +125,6 @@ const CadastroCliente: React.FC = () => {
                value={password}
                onChangeText={setPassword}
                secureTextEntry={true} />
-
-               <TextInput
-                style={styles.input}
-                placeholder="Imagem"
-                value={imagem}
-                onChangeText={setImagem} 
-                multiline />
 
                <View style={styles.alinhamentoImagemSelecionada}>
                    {imagem ? <Image source ={{uri: imagem}} style={styles.imagemSelecionada} /> : null}

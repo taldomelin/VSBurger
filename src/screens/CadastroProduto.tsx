@@ -22,7 +22,7 @@ const CadastroProduto: React.FC = () => {
             name: new Date() + '.jpg'
         });
 
-        const response =await axios.post('http://10.137.11.207:8000/api/produtos',formData, {
+        const response =await axios.post('http://10.137.11.206:8000/api/produtos',formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -122,7 +122,8 @@ const CadastroProduto: React.FC = () => {
             </View>
 
         </View>
-    );
+    )
+    ;
 }
 
     const styles = StyleSheet.create({

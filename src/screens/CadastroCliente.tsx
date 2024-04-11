@@ -11,7 +11,7 @@ const CadastroCliente: React.FC = () => {
     const [email, setEmail] = useState<string>('');
     const [cpf, setCpf] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const [imagem, setImagem] = useState<any>('');
+    const [foto, setFoto] = useState<any>('');
 
     const CadastrarProduto = async () => {
        try{
@@ -22,8 +22,8 @@ const CadastroCliente: React.FC = () => {
        formData.append('email',email);
        formData.append('cpf',cpf);
        formData.append('password',password);
-       formData.append('imagem', {
-        uri: imagem,
+       formData.append('foto', {
+        uri: foto,
         type: 'image/jpeg',
         name: new Date() + '.jpg'
     });
@@ -54,9 +54,9 @@ const CadastroCliente: React.FC = () => {
             }else if(response.error){
                 console.log('erro ao abrir a camera');
             }else {
-                let imagemUri = response.uri || response.assets?.[0]?.uri;
-                setImagem(imagemUri);
-                console.log(imagemUri);
+                let fotoUri = response.uri || response.assets?.[0]?.uri;
+                setFoto(fotoUri);
+                console.log(fotoUri);
             }
         });
      }
@@ -75,8 +75,8 @@ const CadastroCliente: React.FC = () => {
             } else if(response.error){
                 console.log('erro ao abrir a galeria');
             } else {
-                let imagemUri = response.uri || response.assets?.[0]?.uri;
-                setImagem(imagemUri);
+                let fotoUri = response.uri || response.assets?.[0]?.uri;
+                setFoto(fotoUri);
             }
         })
      }
@@ -126,8 +126,15 @@ const CadastroCliente: React.FC = () => {
                onChangeText={setPassword}
                secureTextEntry={true} />
 
+               <TextInput
+                style={styles.input}
+                placeholder="Foto"
+                value={foto}
+                onChangeText={setFoto} 
+                multiline />
+
                <View style={styles.alinhamentoImagemSelecionada}>
-                   {imagem ? <Image source ={{uri: imagem}} style={styles.imagemSelecionada} /> : null}
+                   {foto ? <Image source ={{uri: foto}} style={styles.imagemSelecionada} /> : null}
                </View>
                <TouchableOpacity style={styles.imageButton} onPress={selecionarImagem}>
                    <Text style={styles.imageButtonText}>Selecionar Imagem</Text>

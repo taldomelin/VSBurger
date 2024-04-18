@@ -1,7 +1,8 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import {View, Text, StyleSheet, FlatList, TouchableOpacity, StatusBar, Image, ImageBackground, ScrollView} from "react-native";
 
-interface Item {
+interface Produto {
     id: string,
     nome: string,
     preco: string,
@@ -9,115 +10,9 @@ interface Item {
     imagem:any,
 }
 
-const dados: Item[] = [
-    {
-        id:"1",
-        nome:"➀𝕏-ℍ𝕒𝕞𝕓𝕦́𝕣𝕘𝕦𝕖𝕣",
-        preco:" 10,00",
-        ingredientes:"Pão, presunto, queijo e hambúrguer.",
-        imagem: require('../src/assets/images/x-burguer.png')
-    },
-    {
-        id:"2",
-        nome:"②𝕏-𝕊𝕒𝕝𝕒𝕕𝕒",
-        preco:" 13,00",
-        ingredientes:"Pão, presunto, queijo, hambúrguer, alface e tomate.",
-        imagem: require('../src/assets/images/x-salada.png')
-    },
-    {
-        id:"3",
-        nome:"➂𝕏-𝔽𝕣𝕒𝕟𝕘𝕠",
-        preco:" 13,00",
-        ingredientes:"Pão, presunto, queijo, frango, alface e tomate.",
-        imagem: require('../src/assets/images/x-frango.png')
-    },
-    {
-        id:"4",
-        nome:"➃𝕏-𝔹𝕒𝕔𝕠𝕟",
-        preco:" 15,00",
-        ingredientes:"Pão, presunto, queijo, hambúrguer, bacon, alface e tomate.",
-        imagem: require('../src/assets/images/x-bacon.png')
-    },
-    {
-        id:"5",
-        nome:"➄𝕏-𝔼𝔾𝔾",
-        preco:" 13,00",
-        ingredientes:"Pão, presunto, queijo, hambúrguer, ovo, alface e tomate.",
-        imagem: require('../src/assets/images/x-egg.png')
-    },
-    {
-        id:"6",
-        nome:"➅𝕏-ℂ𝕒𝕝𝕒𝕓𝕣𝕖𝕤𝕒",
-        preco:" 14,00",
-        ingredientes:"Pão, presunto, queijo, hambúrguer, calabresa, alface e tomate.",
-        imagem: require('../src/assets/images/x-calabresa.png')
-    },
-    {
-        id:"7",
-        nome:"➆𝕏-𝔹𝕒𝕘𝕦𝕟𝕔̧𝕒",
-        preco:" 20,00",
-        ingredientes:"Pão, presunto, queijo, hambúrguer, bacon, calabresa, alface e tomate.",
-        imagem: require('../src/assets/images/x-bagunca.png')
-    },
-    {
-        id:"8",
-        nome:"➇𝕏-𝕋𝕦𝕕𝕠",
-        preco:" 25,00",
-        ingredientes:"Pão, presunto, queijo, hambúrguer, calabresa, bacon, ovo, milho, batata palha, frango, salsicha, catupiry, alface e tomate.",
-        imagem: require('../src/assets/images/x-tudo.png')
-    },
-    {
-        id:"9",
-        nome:"➈ℙ𝕠𝕣𝕔̧𝕒̃𝕠 𝕕𝕖 𝕓𝕒𝕥𝕒𝕥𝕒 𝕤𝕚𝕞𝕡𝕝𝕖𝕤-𝟙𝟘𝟘𝕘",
-        preco:" 20,00",
-        ingredientes:"100g de batata frita.",
-        imagem: require('../src/assets/images/batata.png')
-    },
-    {
-        id:"10",
-        nome:"⑩ℙ𝕠𝕣𝕔̧𝕒̃𝕠 𝕕𝕖 𝕓𝕒𝕥𝕒𝕥𝕒  (𝕔𝕙𝕖𝕕𝕕𝕒𝕣+𝕓𝕒𝕔𝕠𝕟)-𝟙𝟝𝟘𝕘",
-        preco:" 25,00",
-        ingredientes:"150g de batata frita com cheddar e bacon por cima.",
-        imagem: require('../src/assets/images/batatabacon.png')
-    },
-    {
-        id:"11",
-        nome:"⑪ℂ𝕠𝕔𝕒-ℂ𝕠𝕝𝕒 𝕝𝕒𝕥𝕒",
-        preco:" 5,00",
-        ingredientes:"Felicidade.",
-        imagem: require('../src/assets/images/cocalata.png')
-    },
-    {
-        id:"12",
-        nome:"⑫ℂ𝕠𝕔𝕒-ℂ𝕠𝕝𝕒 𝟚𝕃",
-        preco:" 14,00",
-        ingredientes:"Muita felicidade.",
-        imagem: require('../src/assets/images/coca2l.png')
-    },
-    {
-        id:"13",
-        nome:"⑬𝔾𝕦𝕣𝕒𝕟𝕒́ 𝕝𝕒𝕥𝕒",
-        preco:" 3,50",
-        ingredientes:"Alegria.",
-        imagem: require('../src/assets/images/guaranalata.png')
-    },
-    {
-        id:"14",
-        nome:"⑭𝔾𝕦𝕒𝕣𝕒𝕟𝕒́ 𝟚𝕃",
-        preco:" 9,00",
-        ingredientes:"Muita alegria.",
-        imagem: require('../src/assets/images/guarana2l.png')
-    },
-    {
-        id:"15",
-        nome:"⑮𝔸́𝕘𝕦𝕒 𝕞𝕚𝕟𝕖𝕣𝕒𝕝",
-        preco:" 3,00",
-        ingredientes:"500ml de água.",
-        imagem: require('../src/assets/images/agua.png')
-    },
-];
 
-const renderItem = ({item}: {item: Item}) => (
+
+const renderItem = ({item}: {item: Produto}) => (
     <View style={styles.item}>
         <Text style={styles.fonteNome}>{item.nome}🖥</Text>
         <Text style={styles.fonte}>------------------------------------------------------</Text>
@@ -131,6 +26,26 @@ const renderItem = ({item}: {item: Item}) => (
 )
 
 function VSBurger(): React.JSX.Element {
+    const [produtos, setProdutos] = useState<Produto[]>([]);
+
+    useEffect(() => {
+        listarProdutos();           
+    }, []);
+
+
+    const listarProdutos = async () => {
+        try {
+            const response = await axios.get('http://10.137.11.208:8000/api/produtos');
+
+            console.log(response.data)
+            if (response.status === 200) {
+                setProdutos(response.data);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    
     return (
         <View style={styles.container}>
               <ImageBackground source={require('../src/assets/images/fotodetras.jpg')} resizeMode="cover" style={styles.imagemfundo}>
@@ -142,7 +57,7 @@ function VSBurger(): React.JSX.Element {
             
             <FlatList
             showsVerticalScrollIndicator={false} 
-                data={dados}
+                data={produtos}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id}
             />

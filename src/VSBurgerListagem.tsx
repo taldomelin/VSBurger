@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     fonteNome:{
-        fontSize:25,
+        fontSize:30,
         fontWeight:'100',
         color:'white'
     },

@@ -1,11 +1,14 @@
 import React from "react";
 import {View, Text, StyleSheet, FlatList, TouchableOpacity, StatusBar, Image, ImageBackground, ScrollView} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 interface Item {
     id: string,
     nome: string,
     imagem:any,
 }
+
+const navigation = useNavigation();
 
 const dados: Item[] = [
     {
@@ -117,6 +120,9 @@ function VSBurger(): React.JSX.Element {
                     source={require('../src/assets/images/burger.png')}
                     style={ styles.footerIcon}
                     />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('VSBurgerCardapio')}>
+                    <Image source={require('../src/assets/images/burger.png')} style={styles.footerIcon}></Image>
                 </TouchableOpacity>
                 <TouchableOpacity>
                     <Image

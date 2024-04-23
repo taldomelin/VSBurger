@@ -28,7 +28,7 @@ const CadastroCliente: React.FC = () => {
         name: new Date() + '.jpg'
     });
 
-       const response =await axios.post('http://10.137.11.208:8000/api/clientes',formData, {
+       const response =await axios.post('http://10.137.11.206:8000/api/clientes',formData, {
            headers: {
                'Content-Type': 'multipart/form-data'
            }
